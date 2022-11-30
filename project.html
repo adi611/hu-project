@@ -8,31 +8,41 @@
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <style>
         #if {
-            height: 400px;
-            width: 50%;
+            height: 80vh;
+            width: 80vw;
         }
+
         label {
             margin-right: 10px;
         }
+
+        #header {
+            background-color: antiquewhite;
+            color: rgb(127, 105, 105)
+        }
+
     </style>
 </head>
 
 <body>
 
-    <div class="container-fluid">
+    <div class="container-fluid" id="header">
         <h1>Humanities Project: 5th semester</h1>
+        <div class="container-fluid">
+            <label for="searchTxt" class="form-label">Enter a valid comapany name (and press Enter):</label>
+            <input name="searchTxt" type="text" maxlength="512" id="searchTxt" class="searchField" />
+        </div>
     </div>
 
     <div class="container-fluid">
-        <div class="container-fluid">
-            <!-- <p>Enter a valid comapany name: </p> -->
-            <label for="searchTxt" class="form-label">Enter a valid comapany name (and press Enter):</label>
-            <input name="searchTxt" type="text" maxlength="512" id="searchTxt" class="searchField"/>
-        </div>
+
         <br>
-        <div class="container-fluid">
-            <iframe src="https://in.investing.com/equities/bharti-airtel-balance-sheet"
-                title="W3Schools Free Online Web Tutorials" id="if" onLoad="iframeDidLoad();">
+        <div id="ph">
+            <p>Our Balance Sheet</p>
+        </div>
+        <div class="container-fluid" id="ifdiv" style="overflow:hidden;">
+            <iframe src="https://in.investing.com/equities/bharti-airtel-balance-sheet?periods=qoq&period_type=quarterly"
+                title="W3Schools Free Online Web Tutorials" id="if" onLoad="iframeDidLoad();" style="margin-top: -120px;">
             </iframe>
         </div>
     </div>
@@ -45,6 +55,7 @@
     function iframeDidLoad() {
         alert('Done');
     }
+
 
     //creates a listener for when you press a key
     window.onkeyup = keyup;
@@ -66,7 +77,7 @@
         // event.preventDefault();
         // var inp = document.getElementById("searchTxt").value;
         inp = inp.replace(/\s+/g, '-').toLowerCase();
-        document.getElementById('if').src = "https://in.investing.com/equities/" + inp + "-balance-sheet";
+        document.getElementById('if').src = "https://in.investing.com/equities/" + inp + "-balance-sheet?periods=qoq&period_type=quarterly";
         console.log(inp);
     }
 // document.onload = submit();
